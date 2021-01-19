@@ -7,6 +7,7 @@ export default {
       nickName: "GitHub"
     },
     {
+      avatar_url: "/src/assets/male.png",
       github_url: "https://avatars1.githubusercontent.com/u/30177?s=200&v=4",
       name: "Android Open Source",
       nickName: "Android"
