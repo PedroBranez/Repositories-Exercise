@@ -7,11 +7,11 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title
-            v-text="user.nickName"
+          <v-list-item-title v-text="user.nickName"></v-list-item-title>
+          <v-list-item-subtitle
+            v-text="user.name"
             :id="`list-item-${index}`"
-          ></v-list-item-title>
-          <v-list-item-subtitle v-text="user.name"></v-list-item-subtitle>
+          ></v-list-item-subtitle>
         </v-list-item-content>
 
         <v-list-item-action>
@@ -23,6 +23,10 @@
         </v-list-item-action>
       </v-list-item>
     </v-list>
+    <v-btn @click="redirectToView('')">
+      <span class="mr-2">Index</span>
+      <v-icon>mdi-open-in-new</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -51,6 +55,9 @@ export default {
     },
     openRepositoryLink(userGithubUrl) {
       window.open(userGithubUrl, "_blank");
+    },
+    redirectToView(route) {
+      this.$router.push(`/${route}`);
     }
   }
 };
