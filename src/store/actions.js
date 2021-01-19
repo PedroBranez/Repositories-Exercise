@@ -3,6 +3,6 @@
 export default {
   //AGENDA
   updateUsers({ commit }, users) {
-    commit("mutateupdateUsers", users);
+    commit("mutateUpdateUsers", users);
   }
 };
