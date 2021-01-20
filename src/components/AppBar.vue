@@ -33,9 +33,7 @@
 <script>
 export default {
   name: "App",
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
   computed: {
     currentRouteName() {
       return this.$route.name;

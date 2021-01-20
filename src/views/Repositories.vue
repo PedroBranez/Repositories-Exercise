@@ -31,15 +31,12 @@
 </template>
 
 <script>
-//import usersData from "@/store/data.json";
 import { mapGetters } from "vuex";
 
 export default {
   name: "Repositories",
   data() {
-    return {
-      //users: usersData.users
-    };
+    return {};
   },
   computed: {
     ...mapGetters(["getUsers"]),

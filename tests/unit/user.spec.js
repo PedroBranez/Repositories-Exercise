@@ -51,7 +51,6 @@ describe("Users module", () => {
       vuetify
     });
     const userToCheck = wrapper.vm.$store.state.users[1];
-    //console.log("DRAW HTML: " + wrapper.html());
 
     const userRendered = wrapper.find("#list-item-1");
 

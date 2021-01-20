@@ -3,13 +3,13 @@
 ## Table of contents
 * [Description](#description)
 * [Technologies](#technologies)
-* [Installation](#installations)
+* [Installation](#installation)
 * [Usage](#usage)
 
 ## Description
 
-> This is a simple application whose goal is accomplish the lecture of JSON files containing information about different users. s
-Once the information is processed, each user are shown in a list in wich we can see their data.
+This is a simple application whose goal is accomplish the lecture of JSON files containing information about different users.
+Once the information is processed, each user is shown in a list in wich we can see their data.
 
 ## Technologies
 Project is created with:
@@ -68,4 +68,4 @@ previously. Each user consists of 4 attributes:
 - repository_url
 - avatar_url  
 
-the avatar_url may not exist and in this case, a default image will be provided. As we can see, each user has a card in wich we can see their informatio. In order to access to  their repository, we simply click on the icon that is in the right part of the card and we will be redirected to the corresponding page.
+The avatar_url attribute may not exist and in this case, a default image will be provided. As we can see, each user has a card in wich we can see their information. In order to access to  their repository, we simply click on the icon that is in the right part of the card and we will be redirected to the corresponding page.
