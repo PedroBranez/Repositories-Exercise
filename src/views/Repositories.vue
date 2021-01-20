@@ -2,19 +2,24 @@
   <div class="repositories">
     <h2>Repositories page</h2>
     <v-card color="#F2F2F2" flat v-for="(user, index) in users" :key="index">
-      <v-row row wrap justify-space-around class="ma-2 pa-2">
+      <v-row row wrap align="center" justify="center" class="ma-2 pa-2">
         <v-col cols="1">
-          <v-avatar size="50">
+          <v-avatar size="60">
             <img :src="loadCorrectImage(user)" />
           </v-avatar>
         </v-col>
-        <v-col>
-          <h4 v-text="user.nickName" :id="`list-item-${index}`"></h4>
-          <span v-text="user.name"></span>
+        <v-col cols="10">
+          <h3 v-text="user.nickName"></h3>
+          <div
+            v-text="user.name"
+            :id="`list-item-${index}`"
+            class="subtitle-1"
+          ></div>
+          <div class="caption">{{ user.github_url }}</div>
         </v-col>
         <v-spacer></v-spacer>
         <v-col cols="1">
-          <v-btn text @click="openRepositoryLink(user.github_url)">
+          <v-btn large icon text @click="openRepositoryLink(user.github_url)">
             <v-icon color="grey">
               mdi-open-in-new
             </v-icon>
