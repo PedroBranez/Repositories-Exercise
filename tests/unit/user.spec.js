@@ -1,6 +1,7 @@
 import { assert } from "chai";
 import { mount, createLocalVue } from "@vue/test-utils";
 import Repositories from "@/views/Repositories.vue";
+import Index from "@/views/Index.vue";
 
 import Vuex from "vuex";
 import Vue from "vue";
@@ -31,6 +32,8 @@ describe("Users module", () => {
       mutations,
       getters
     });
+
+    global.requestAnimationFrame = cb => cb();
   });
   it("Verify that the JSON file was read.", () => {
     const wrapper = mount(Repositories, {
@@ -54,5 +57,40 @@ describe("Users module", () => {
     const userRendered = wrapper.find("#list-item-1");
 
     assert.strictEqual(userRendered.text(), userToCheck.name);
+  });
+  it("Load a default image for users without avatar_url.", async () => {
+    const wrapper = mount(Repositories, {
+      store,
+      localVue,
+      vuetify
+    });
+
+    const userWithoutAvatarUrl = {
+      github_url: "https://github.com/vuetifyjs",
+      name: "Material Component Framework for Vue",
+      nickName: "vuetify"
+    };
+
+    const imageToRender = wrapper.vm.loadCorrectImage(userWithoutAvatarUrl);
+    const defaultImage = require("@/assets/male.png");
+
+    assert.strictEqual(imageToRender, defaultImage);
+  });
+  it("Cannot upload an empty file.", async () => {
+    let alertMessage = "";
+    global.alert = msg => {
+      alertMessage = msg;
+    };
+    const wrapper = mount(Index, {
+      store,
+      localVue,
+      vuetify
+    });
+
+    wrapper.vm._updateUsers();
+
+    const errorMessage = "Cannot upload an empty file";
+
+    assert.strictEqual(errorMessage, alertMessage);
   });
 });

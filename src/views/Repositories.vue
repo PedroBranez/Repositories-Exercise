@@ -1,32 +1,27 @@
 <template>
   <div class="repositories">
-    <v-list>
-      <v-list-item v-for="(user, index) in users" :key="index">
-        <v-list-item-avatar size="50">
-          <v-img :src="loadCorrectImage(user)"></v-img>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title v-text="user.nickName"></v-list-item-title>
-          <v-list-item-subtitle
-            v-text="user.name"
-            :id="`list-item-${index}`"
-          ></v-list-item-subtitle>
-        </v-list-item-content>
-
-        <v-list-item-action>
+    <h2>Repositories page</h2>
+    <v-card color="#F2F2F2" flat v-for="(user, index) in users" :key="index">
+      <v-row row wrap justify-space-around class="ma-2 pa-2">
+        <v-col cols="1">
+          <v-avatar size="50">
+            <img :src="loadCorrectImage(user)" />
+          </v-avatar>
+        </v-col>
+        <v-col>
+          <h4 v-text="user.nickName" :id="`list-item-${index}`"></h4>
+          <span v-text="user.name"></span>
+        </v-col>
+        <v-spacer></v-spacer>
+        <v-col cols="1">
           <v-btn text @click="openRepositoryLink(user.github_url)">
             <v-icon color="grey">
               mdi-open-in-new
             </v-icon>
           </v-btn>
-        </v-list-item-action>
-      </v-list-item>
-    </v-list>
-    <v-btn @click="redirectToView('')">
-      <span class="mr-2">Index</span>
-      <v-icon>mdi-open-in-new</v-icon>
-    </v-btn>
+        </v-col>
+      </v-row>
+    </v-card>
   </div>
 </template>
 
@@ -51,13 +46,10 @@ export default {
     loadCorrectImage(user) {
       return Object.prototype.hasOwnProperty.call(user, "avatar_url")
         ? user.avatar_url
-        : require("/src/assets/male.png");
+        : require("@/assets/male.png");
     },
     openRepositoryLink(userGithubUrl) {
       window.open(userGithubUrl, "_blank");
-    },
-    redirectToView(route) {
-      this.$router.push(`/${route}`);
     }
   }
 };

@@ -1,9 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <v-toolbar-title>Repositories Exercise</v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-app-bar>
+    <AppBar />
     <v-main>
       <v-container>
         <router-view />
@@ -13,9 +10,12 @@
 </template>
 
 <script>
+
+import AppBar from "@/components/AppBar";
+
 export default {
   name: "App",
-
+  components: { AppBar },
   data: () => ({
     //
   })
